@@ -1,12 +1,5 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-
-type SubmittedSuccessfullyProps = {
-  open: boolean;
-  // onOpenChange?: (open: boolean) => void;
-  sections: number | string;
-  answeredQues: number | string;
-  LogoutHandle: () => void;
-};
+import type { SubmittedSuccessfullyProps } from "@/interfaces/Userinterfaces";
 
 export function Submittedsucessfully({
   open,
@@ -15,6 +8,7 @@ export function Submittedsucessfully({
   answeredQues,
   LogoutHandle,
 }: SubmittedSuccessfullyProps) {
+  
   return (
     <Dialog open={open}>
       <DialogContent

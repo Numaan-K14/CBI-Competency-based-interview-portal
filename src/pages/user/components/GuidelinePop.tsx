@@ -9,14 +9,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import type { GuidelinesProps } from "@/interfaces/Userinterfaces";
 
-interface GuidelinesProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  handleChange: () => void;
-}
-
-export function Guidelines({ open, onOpenChange, handleChange }: GuidelinesProps) {
+export function Guidelines({
+  open,
+  onOpenChange,
+  handleChange,
+}: GuidelinesProps) {
+  
   const Bullets = [
     {
       index: "1",
@@ -118,7 +118,7 @@ export function Guidelines({ open, onOpenChange, handleChange }: GuidelinesProps
   );
 }
 
-export const BulletPoints = ({ label }:{label:string}) => {
+export const BulletPoints = ({ label }: { label: string }) => {
   return (
     <ul className="mb-1.5">
       <li className="flex items-start gap-2">
@@ -128,13 +128,8 @@ export const BulletPoints = ({ label }:{label:string}) => {
           className="mt-0.5 h-4 w-4 shrink-0"
         />
 
-        <span className="text-sm  text-[#1e242d] font-normal">
-          {label}
-        </span>
+        <span className="text-sm  text-[#1e242d] font-normal">{label}</span>
       </li>
     </ul>
   );
 };
-
-
-

@@ -1,16 +1,5 @@
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-
-interface AlertPopUpProps {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  Icon: string;
-  heading: string;
-  Paragraph: string;
-  action: string;
-  cancel: string;
-  PausedHandle: () => void;
-  LogoutHandle: () => void;
-}
+import type { AlertPopUpProps } from "@/interfaces/Userinterfaces";
 
 export function AlertPopUp({
   open,

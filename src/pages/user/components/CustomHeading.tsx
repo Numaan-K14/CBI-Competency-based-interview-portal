@@ -1,14 +1,8 @@
+import type { CustomHeadingProps } from "@/interfaces/Userinterfaces";
 import { cn } from "@/lib/utils";
 import { RxExit } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
-
-type CustomHeadingProps={
-  heading:string
-  description:string
-  button?:string
-  className :any
-}
 
 export function CustomHeading({ heading, description, button, className }:CustomHeadingProps) {
   const navigate = useNavigate();

@@ -1,0 +1,58 @@
+export interface LoginFormValues {
+  email: string;
+  password: string;
+  remember?: boolean;
+}
+
+export interface AlertPopUpProps {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  Icon: string;
+  heading: string;
+  Paragraph: string;
+  action: string;
+  cancel: string;
+  PausedHandle: () => void;
+  LogoutHandle: () => void;
+}
+
+export interface ButtonFooterProps {
+  apiResponse: any;
+  setOpenPop: (open: boolean) => void;
+  PausedHandle: () => void;
+  isPending: boolean;
+  handleSubmit: () => void;
+};
+
+export interface CompetencyCardProps {
+  number: string | number;
+  label: string;
+  paragraph: string;
+};
+
+export interface CustomHeadingProps {
+  heading: string;
+  description: string;
+  button?: string;
+  className: any;
+};
+
+export interface CustomTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  Question: string;
+  required?: boolean;
+  name: string;
+}
+
+export interface GuidelinesProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  handleChange: () => void;
+}
+
+export interface SubmittedSuccessfullyProps {
+  open: boolean;
+  // onOpenChange?: (open: boolean) => void;
+  sections: number | string;
+  answeredQues: number | string;
+  LogoutHandle: () => void;
+};

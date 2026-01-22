@@ -1,12 +1,7 @@
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import type { CustomTextAreaProps } from "@/interfaces/Userinterfaces";
 import { useFormContext } from "react-hook-form";
-
-interface CustomTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  Question: string;
-  required?: boolean;
-  name: string;
-}
 
 export function CustomTextArea({ Question, required, name, ...props }: CustomTextAreaProps) {
   const {

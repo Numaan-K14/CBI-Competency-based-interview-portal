@@ -1,13 +1,8 @@
+import type { ButtonFooterProps } from "@/interfaces/Userinterfaces";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { LuPause } from "react-icons/lu";
 
-type ButtonFooterProps = {
-  apiResponse: any;
-  setOpenPop: (open: boolean) => void;
-  PausedHandle: () => void;
-  isPending: boolean;
-  handleSubmit: () => void;
-};
+
 
 export function ButtonFooter({
   apiResponse,

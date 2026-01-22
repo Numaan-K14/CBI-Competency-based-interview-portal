@@ -1,13 +1,11 @@
 
 import { useState } from "react";
-
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { CustomHeading } from "../components/CustomHeading";
-import { CompetencyCard } from "../components/CompetencyCard";
-import { Guidelines } from "../components/GuidelinePop";
+import { CustomHeading } from "./components/CustomHeading";
+import { CompetencyCard } from "./components/CompetencyCard";
+import { Guidelines } from "./components/GuidelinePop";
 import { useQuery } from "@/hooks/useQuerry";
-
 
 const user = JSON.parse(localStorage.getItem("user") || "{}");
 

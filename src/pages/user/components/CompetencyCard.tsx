@@ -1,10 +1,4 @@
-
-
-type CompetencyCardProps = {
-  number: string | number;
-  label: string;
-  paragraph: string;
-};
+import type { CompetencyCardProps } from "@/interfaces/Userinterfaces";
 
 export function CompetencyCard({ number, label, paragraph }: CompetencyCardProps) {
   return (

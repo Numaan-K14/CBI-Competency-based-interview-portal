@@ -9,12 +9,11 @@ import { Loader } from "lucide-react";
 
 import { useCompetencyHandlers } from "@/hooks/useCompetencyHandlers";
 
-import { CustomHeading } from "../components/CustomHeading";
-import { CustomTextArea } from "../components/CustomTextARea";
-import { AlertPopUp } from "../components/Alert-pop";
-import { Submittedsucessfully } from "../components/Submitted-sucessfully";
+import { CustomHeading } from "./components/CustomHeading";
+import { CustomTextArea } from "./components/CustomTextARea";
+import { AlertPopUp } from "./components/Alert-pop";
+import { Submittedsucessfully } from "./components/Submitted-sucessfully";
 import { useQuery } from "@/hooks/useQuerry";
-
 
 const user = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -22,25 +21,14 @@ export function CompetencyPage() {
   const location = useLocation();
   const QuestionerId = location.state;
   const Form = useForm();
-  
-//  const { data: quessionnaireData, refetch } = useQuery({
-//     queryKey: [
-//       `/cbi/${QuestionerId?.partiAssessments?.quessionnaire_id}/${user?.participant_id}`,
-//     ],
-//     select: (data: any) => data?.data?.data,
-//     enabled: !!user?.participant_id && !!QuestionerId,
-//   });
 
-const { data: quessionnaireData, refetch } = useQuery<any>({
-  queryKey: [
-    `/cbi/${QuestionerId?.partiAssessments?.quessionnaire_id}/${user?.participant_id}`,
-  ],
-  select: (data: any) => data?.data?.data,
-  enabled: !!user?.participant_id && !!QuestionerId,
-});
-
-
-
+  const { data: quessionnaireData, refetch } = useQuery<any>({
+    queryKey: [
+      `/cbi/${QuestionerId?.partiAssessments?.quessionnaire_id}/${user?.participant_id}`,
+    ],
+    select: (data: any) => data?.data?.data,
+    enabled: !!user?.participant_id && !!QuestionerId,
+  });
 
   const {
     onSubmit,
@@ -72,7 +60,9 @@ const { data: quessionnaireData, refetch } = useQuery<any>({
       <CustomHeading
         heading={`Section ${quessionnaireData?.sequence} of ${QuestionerId?.sections}`}
         description="Assess your professional skills across key competencies"
-        className="sticky top-0 z-10" button={undefined}/>
+        className="sticky top-0 z-10"
+        button={undefined}
+      />
 
       <section className="p-6 overflow-y-auto h-[80vh]">
         <div className="p-6 bg-white rounded-xl">
@@ -106,32 +96,34 @@ const { data: quessionnaireData, refetch } = useQuery<any>({
               </div>
 
               {isTrueFlag &&
-                quessionnaireData?.prop_ques_resp?.map((item:any, index:any) => (
-                  <div key={item?.id || index} className="relative pl-5">
-                    <GoDotFill className="absolute left-0 top-2 text-[#7F56D9]" />
+                quessionnaireData?.prop_ques_resp?.map(
+                  (item: any, index: any) => (
+                    <div key={item?.id || index} className="relative pl-5">
+                      <GoDotFill className="absolute left-0 top-2 text-[#7F56D9]" />
 
-                    {item?.response && (
-                      <div className="absolute border-l-2 border-[#E4E7EC] left-1.75 top-7 h-full" />
-                    )}
+                      {item?.response && (
+                        <div className="absolute border-l-2 border-[#E4E7EC] left-1.75 top-7 h-full" />
+                      )}
 
-                    <span className="text-[#535862] font-bold text-lg block mb-2">
-                      Follow Up Question {index + 1}
-                    </span>
+                      <span className="text-[#535862] font-bold text-lg block mb-2">
+                        Follow Up Question {index + 1}
+                      </span>
 
-                    <CustomTextArea
-                      Question={item?.question_text}
-                      name={`answer_${index}`}
-                      required
-                      disabled={
-                        item?.response ||
-                        apiResponse?.is_prop_ques_available === false ||
-                        isPending
-                      }
-                      defaultValue={item?.response ?? null}
-                      placeholder="Write something here..."
-                    />
-                  </div>
-                ))}
+                      <CustomTextArea
+                        Question={item?.question_text}
+                        name={`answer_${index}`}
+                        required
+                        disabled={
+                          item?.response ||
+                          apiResponse?.is_prop_ques_available === false ||
+                          isPending
+                        }
+                        defaultValue={item?.response ?? null}
+                        placeholder="Write something here..."
+                      />
+                    </div>
+                  ),
+                )}
             </form>
           </FormProvider>
         </div>
@@ -165,9 +157,15 @@ const { data: quessionnaireData, refetch } = useQuery<any>({
               <button
                 disabled={isPending}
                 onClick={Form.handleSubmit(onSubmit)}
-                className="text-base font-semibold leading-5 bg-[#3B7FE6] text-white py-3 px-5 rounded-md flex items-center gap-1 hover:bg-[#75a5ee] disabled:opacity-50"
+                className="text-base font-semibold leading-5 bg-[#3B7FE6] text-white py-3 px-5 rounded-md flex justify-center items-center gap-1 hover:bg-[#75a5ee] transition-all  disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? (
+                  "Submitting..."
+                ) : (
+                  <span className=" flex justify-center items-center gap-1">
+                    Submit <IoArrowForwardOutline />
+                  </span>
+                )}
               </button>
             )}
           </div>

@@ -1,16 +1,10 @@
-
 import { axios } from "@/config/axios";
+import type { LoginFormValues } from "@/interfaces/Userinterfaces";
 import { Eye, EyeOff, Loader } from "lucide-react";
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-
-interface LoginFormValues {
-  email: string;
-  password: string;
-  remember?: boolean;
-}
 
 export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
