@@ -136,18 +136,5 @@ export const BulletPoints = ({ label }:{label:string}) => {
   );
 };
 
-// export const BulletPoints = ({ label }) => {
-//   return (
-//     <>
-//       <div>
-//         <ul className="flex gap-2 items-center space-y-2.5">
-//           <img src="icons/Bullet-Icon.png" className="h-4 w-4" />
-//           <li className="font-normal text-sm leading-5 text-[#1e242d] ">
-//             {label}
-//           </li>
-//         </ul>
-//       </div>
-//     </>
-//   );
-// };
+
 
