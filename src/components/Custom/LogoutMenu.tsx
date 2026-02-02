@@ -55,9 +55,8 @@ export function LogoutMenu() {
   const navigate = useNavigate();
 
   const LogoutHandle = (): void => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    toast.success("Logout Successfully");
+    localStorage.clear();
+    toast.success("Logged out successfully");
     navigate("/login");
   };
 
@@ -69,7 +68,7 @@ export function LogoutMenu() {
         </button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-10" align="end">
+      <DropdownMenuContent className="w-10" align="center">
         <DropdownMenuItem onClick={LogoutHandle}>
           <span className="flex items-center justify-between w-full px-1 hover:text-red-600">
             <span className="text-[16px] font-bold">Log Out</span>

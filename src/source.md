@@ -10,6 +10,10 @@ import type {
   User,
 } from "@/interfaces/HandlerInterfaces";
 
+
+
+
+
 export function useCompetencyHandlers({
   Form,
   quessionnaireData,
@@ -26,7 +30,6 @@ export function useCompetencyHandlers({
   const [isTrueFlag, setIsTrueFlag] = useState<boolean>(false);
   const [completed, setCompleted] = useState<boolean>(false);
   const [loader, setLoader] = useState<boolean>(false);
-  // const [lockedIndex, setLockedIndex] = useState<number>(-1);
 
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: any) => axios.post("/cbi", payload),
@@ -50,7 +53,7 @@ export function useCompetencyHandlers({
         { role: "assistant", id: item?.id ?? "" },
         { role: "user", text: data[`answer_${index}`] ?? "" },
       ])
-      .flat();
+      .flat(); 
     const payload = {
       conversation: [
         {
@@ -100,7 +103,7 @@ export function useCompetencyHandlers({
     setCompleted(false);
 
     setTimeout(() => {
-      toast.success("Logged out successfully");
+      toast.info("Logged out successfully");
       navigate("/login");
     }, 1000);
   };
@@ -124,40 +127,49 @@ export function useCompetencyHandlers({
     isTrueFlag,
     completed,
     loader,
-    setCompleted,
-    // lockedIndex,
   };
 }
 
 
-//  const onSubmit = (data: FormData): void => {
-//    const converstion_of_prop_question = (
-//      quessionnaireData?.prop_ques_resp ?? []
-//    )
-//      .map((item, index) => [
-//        { role: "assistant", id: item?.id ?? "" },
-//        { role: "user", text: data[`answer_${index}`] ?? "" },
-//      ])
-//      .flat();
-//    const payload = {
-//      conversation: [
-//        {
-//          role: "assistant",
-//          id: quessionnaireData?.id,
-//          text: quessionnaireData?.questions?.question,
-//        },
-//        { role: "user", text: data?.answer },
-//        ...converstion_of_prop_question,
-//      ],
-//      competency_name: quessionnaireData?.competency?.competency,
-//      remaining_time: 96,
-//      probe_count: probCount,
-//      expected_behaviors:
-//        quessionnaireData?.competency?.expected_behaviours?.map(
-//          (i) => i?.expected_behaviour,
-//        ),
-//      questionnaire_id: QuestionerId?.partiAssessments?.quessionnaire_id,
-//      participant_id: user?.participant_id,
-//    };
-//    mutate(payload);
-//  };
+
+
+
+
+
+on submit using map break 
+
+  const onSubmit = (data: FormData): void => {
+    const converstion_of_prop_question = (
+      quessionnaireData?.prop_ques_resp ?? []
+    )
+      .map((item, index) => {
+        if (index === 0) {
+          return [
+            {
+              role: "assistant",
+              id: quessionnaireData?.id,
+              text: quessionnaireData?.questions?.question,
+            },
+            { role: "user", text: data?.answer },
+          ];
+        }
+        return [
+          { role: "assistant", id: item?.id ?? "" },
+          { role: "user", text: data[`answer_${index}`] ?? "" },
+        ];
+      })
+      .flat();
+    const payload = {
+      conversation: converstion_of_prop_question,
+      competency_name: quessionnaireData?.competency?.competency,
+      remaining_time: 96,
+      probe_count: probCount,
+      expected_behaviors:
+        quessionnaireData?.competency?.expected_behaviours?.map(
+          (i) => i?.expected_behaviour,
+        ),
+      questionnaire_id: QuestionerId?.partiAssessments?.quessionnaire_id,
+      participant_id: user?.participant_id,
+    };
+    mutate(payload);
+  };

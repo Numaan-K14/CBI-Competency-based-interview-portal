@@ -3,12 +3,10 @@ import type { SubmittedSuccessfullyProps } from "@/interfaces/Userinterfaces";
 
 export function Submittedsucessfully({
   open,
-  // onOpenChange,
   sections,
   answeredQues,
   LogoutHandle,
 }: SubmittedSuccessfullyProps) {
-  
   return (
     <Dialog open={open}>
       <DialogContent

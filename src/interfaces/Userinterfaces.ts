@@ -34,6 +34,7 @@ export interface CustomHeadingProps {
   heading: string;
   description: string;
   button?: string;
+  timer?: boolean;
   className: any;
 };
 
@@ -51,7 +52,8 @@ export interface GuidelinesProps {
 
 export interface SubmittedSuccessfullyProps {
   open: boolean;
-  // onOpenChange?: (open: boolean) => void;
+  setOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
   sections: number | string;
   answeredQues: number | string;
   LogoutHandle: () => void;

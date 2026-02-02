@@ -21,7 +21,6 @@ export function Landing() {
     select: (Competency: any) => Competency?.data?.data,
     enabled: !!user?.participant_id,
   });
-
   // --competency questionaireID--
   const { data: QuestionerId } = useQuery({
     queryKey: [

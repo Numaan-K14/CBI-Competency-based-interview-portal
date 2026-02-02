@@ -1,16 +1,13 @@
+import { Timer } from "@/components/Custom/TImer";
 import type { CustomHeadingProps } from "@/interfaces/Userinterfaces";
 import { cn } from "@/lib/utils";
-import { RxExit } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
 
-
-export function CustomHeading({ heading, description, button, className }:CustomHeadingProps) {
-  const navigate = useNavigate();
-  function LogoutHandle() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate(0);
-  }
+export function CustomHeading({
+  heading,
+  description,
+  className,
+  timer,
+}: CustomHeadingProps) {
   return (
     <div>
       <header
@@ -24,15 +21,7 @@ export function CustomHeading({ heading, description, button, className }:Custom
             {description}
           </p>
         </div>
-        {button && (
-          <button
-            onClick={LogoutHandle}
-            className="font-semibold text-sm text-[#414651] bg-white border-2 border-[#D5D7DA] py-2.5 px-4 rounded-lg flex gap-2 items-center justify-center hover:bg-[#fafafade] transition cursor-pointer"
-          >
-            <RxExit />
-            {button}
-          </button>
-        )}
+        {timer && <Timer />}
       </header>
       <hr className="border border-[#8E9FC11F] w-full" />
     </div>

@@ -1,14 +1,10 @@
-
 import { useLocation } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { GoDotFill } from "react-icons/go";
 import { LuPause } from "react-icons/lu";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { Loader } from "lucide-react";
-
-
 import { useCompetencyHandlers } from "@/hooks/useCompetencyHandlers";
-
 import { CustomHeading } from "./components/CustomHeading";
 import { CustomTextArea } from "./components/CustomTextARea";
 import { AlertPopUp } from "./components/Alert-pop";
@@ -42,6 +38,7 @@ export function CompetencyPage() {
     isTrueFlag,
     completed,
     loader,
+    // lockedIndex,
   } = useCompetencyHandlers({
     Form,
     quessionnaireData,
@@ -58,10 +55,17 @@ export function CompetencyPage() {
       )}
 
       <CustomHeading
-        heading={`Section ${quessionnaireData?.sequence} of ${QuestionerId?.sections}`}
-        description="Assess your professional skills across key competencies"
+        heading={
+          apiResponse?.is_prop_ques_available === false
+            ? "Review Your Answers"
+            : `Section ${quessionnaireData?.sequence} of ${QuestionerId?.sections}`
+        }
+        description={
+          apiResponse?.is_prop_ques_available === false
+            ? "Here are your responses for the competency. You cannot modify these answers, but you can review them before continuing."
+            : "Assess your professional skills across key competencies"
+        }
         className="sticky top-0 z-10"
-        button={undefined}
       />
 
       <section className="p-6 overflow-y-auto h-[80vh]">
@@ -69,22 +73,19 @@ export function CompetencyPage() {
           <FormProvider {...Form}>
             <form className="flex flex-col gap-6">
               <div className="relative pl-5">
-                {quessionnaireData?.prop_ques_resp?.length > 0 &&
-                  isTrueFlag && (
-                    <>
-                      <GoDotFill className="absolute left-0 top-2 text-[#7F56D9]" />
-                      <div className="absolute border-l-2 border-[#E4E7EC] left-1.75 top-7 h-full" />
-                    </>
-                  )}
+                {apiResponse?.is_prop_ques_available === true && (
+                  <>
+                    <GoDotFill className="absolute left-0 top-2 text-[#7F56D9]" />
+                    <div className="absolute border-l-2 border-[#E4E7EC] left-1.75 top-7 h-full" />
+                  </>
+                )}
 
                 <h1 className="text-[18px] font-semibold text-[#181D27]">
                   Core Question
                 </h1>
-
                 <p className="text-base text-[#181D27] mb-4">
                   This is the main question for this competency.
                 </p>
-
                 <CustomTextArea
                   Question={quessionnaireData?.questions?.question}
                   name="answer"
@@ -99,10 +100,14 @@ export function CompetencyPage() {
                 quessionnaireData?.prop_ques_resp?.map(
                   (item: any, index: any) => (
                     <div key={item?.id || index} className="relative pl-5">
-                      <GoDotFill className="absolute left-0 top-2 text-[#7F56D9]" />
+                      {apiResponse?.is_prop_ques_available === true && (
+                        <>
+                          <GoDotFill className="absolute left-0 top-2 text-[#7F56D9]" />
 
-                      {item?.response && (
-                        <div className="absolute border-l-2 border-[#E4E7EC] left-1.75 top-7 h-full" />
+                          {item?.response && (
+                            <div className="absolute border-l-2 border-[#E4E7EC] left-1.75 top-7 h-full" />
+                          )}
+                        </>
                       )}
 
                       <span className="text-[#535862] font-bold text-lg block mb-2">
@@ -115,8 +120,8 @@ export function CompetencyPage() {
                         required
                         disabled={
                           item?.response ||
-                          apiResponse?.is_prop_ques_available === false ||
-                          isPending
+                          isPending ||
+                          apiResponse?.is_prop_ques_available == false
                         }
                         defaultValue={item?.response ?? null}
                         placeholder="Write something here..."
