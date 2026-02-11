@@ -23,5 +23,5 @@ About Project :
 -Integrated REST APIs to fetch competency data, store responses, and generate evaluation reports. 
 -Designed intuitive UI screens for interview scheduling, question
 navigation, and candidate evaluation.
-*Technolgy Stack* : React.js, JavaScript ,Rest APIs, shadcn/ui, Lucide
+*Technolgy Stack* : React.js, JavaScript, Typescript,Rest APIs, shadcn/ui, Lucide
 React, GitHub, HTML, CSS, Tailwind CSS.
