@@ -1,4 +1,4 @@
-Competency-Based Interview Platform
+Competency-Based Interview Platform 
 
 A modern web-based platform designed to streamline competency-based interviews through structured question sets, secure access control, and automated evaluation workflows.
 
@@ -17,20 +17,20 @@ npm run dev
 3️ Access the Application
 http://localhost:5173
 
- Key Features
-Competency-Based Interview Management
+Key Features :
+Competency-Based Interview Management:
 Structured question sets mapped to specific competencies with automated scoring.
 
-Secure Authentication & Role-Based Access
+Secure Authentication & Role-Based Access :
 Dedicated access levels for Candidates, Interviewers, and Administrators.
 
-REST API Integration
+REST API Integration :
 Fetch competency data, store interview responses, and generate evaluation reports seamlessly.
 
 Automated Evaluation & Reporting
 Simplifies candidate assessment with consistent and transparent scoring logic.
 
-Intuitive & Responsive UI
+Intuitive & Responsive UI :
 Clean and user-friendly interfaces for:
 
 
@@ -39,7 +39,7 @@ React.js, JavaScript ,Rest APIs, shadcn/ui, Lucide
 React, HTML, CSS, Tailwind CSS.
 Version Control: Git & GitHub
 
-Use Cases
+Use Cases:
 Corporate hiring & technical interviews
 Competency-driven candidate evaluation
 Interview automation & reporting
