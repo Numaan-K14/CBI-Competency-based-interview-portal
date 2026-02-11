@@ -1,27 +1,45 @@
-A fast and lightweight React project powered by Vite for modern web development.
+Competency-Based Interview Platform
 
+A modern web-based platform designed to streamline competency-based interviews through structured question sets, secure access control, and automated evaluation workflows.
 
-Installation & Setup:
+Overview :  
+This application helps organizations conduct efficient, fair, and data-driven interviews by managing competencies, interview questions, candidate responses, and evaluation reports—all in one place.
 
-Install all required project dependencies using npm:
+Installation & Setup :
+Follow the steps below to run the project locally:
 
+1️ Install Dependencies
 npm install
 
-Run the project in development mode:
-
+2️ Start Development Server
 npm run dev
 
-The application will be available at:
-
+3️ Access the Application
 http://localhost:5173
 
+ Key Features
+Competency-Based Interview Management
+Structured question sets mapped to specific competencies with automated scoring.
 
-About Project :
+Secure Authentication & Role-Based Access
+Dedicated access levels for Candidates, Interviewers, and Administrators.
 
--Developed a web-based platform to streamline competency- based interviews with structured question sets and automated scoring 
--Implemented secure user authentication and role-based access for candidates, interviewers, and admin users. 
--Integrated REST APIs to fetch competency data, store responses, and generate evaluation reports. 
--Designed intuitive UI screens for interview scheduling, question
-navigation, and candidate evaluation.
-*Technolgy Stack* : React.js, JavaScript, Typescript,Rest APIs, shadcn/ui, Lucide
-React, GitHub, HTML, CSS, Tailwind CSS.
+REST API Integration
+Fetch competency data, store interview responses, and generate evaluation reports seamlessly.
+
+Automated Evaluation & Reporting
+Simplifies candidate assessment with consistent and transparent scoring logic.
+
+Intuitive & Responsive UI
+Clean and user-friendly interfaces for:
+
+
+Technolgy Stack :
+React.js, JavaScript ,Rest APIs, shadcn/ui, Lucide
+React, HTML, CSS, Tailwind CSS.
+Version Control: Git & GitHub
+
+Use Cases
+Corporate hiring & technical interviews
+Competency-driven candidate evaluation
+Interview automation & reporting
