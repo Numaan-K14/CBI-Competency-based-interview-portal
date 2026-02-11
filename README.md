@@ -8,16 +8,17 @@ This application helps organizations conduct efficient, fair, and data-driven in
 Installation & Setup :
 Follow the steps below to run the project locally:
 
-1️ Install Dependencies
+1️ Install Dependencies :
 npm install
 
-2️ Start Development Server
+2️ Start Development Server :
 npm run dev
 
-3️ Access the Application
+3️ Access the Application :
 http://localhost:5173
 
 Key Features :
+
 Competency-Based Interview Management:
 Structured question sets mapped to specific competencies with automated scoring.
 
@@ -40,6 +41,6 @@ React, HTML, CSS, Tailwind CSS.
 Version Control: Git & GitHub
 
 Use Cases:
-Corporate hiring & technical interviews
-Competency-driven candidate evaluation
-Interview automation & reporting
+Corporate hiring & technical interviews.
+Competency-driven candidate evaluation.
+Interview automation & reporting.
